@@ -12,7 +12,8 @@ spec:
     helm:
       valuesObject:
         service:
-          type: NodePort
+          spec: 
+            type: NodePort
         ports:
           web:
             hostPort: 80

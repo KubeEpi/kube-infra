@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app
+  namespace: argocd
+spec:
+  description: Application Laravel convertie depuis docker-compose
+  sourceRepos:
+    - https://github.com/KubeEpi/kube-app.git
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: sample-app
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace

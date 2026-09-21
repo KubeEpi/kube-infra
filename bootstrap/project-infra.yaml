@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra
+  namespace: argocd
+spec:
+  description: Composants du cluster (ingress, monitoring, sécurité, ...)
+  sourceRepos:
+    - https://github.com/KubeEpi/kube-infra.git
+    - https://traefik.github.io/charts
+  destinations:
+    - server: https://kubernetes.default.svc
+      namespace: "*"
+  clusterResourceWitelist:
+    - group: "*"
+      kind: "*"
